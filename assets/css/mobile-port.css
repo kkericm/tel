@@ -24,6 +24,9 @@
         & #r2 {
             width: calc(100% - 100px);
         }
+        & .key {
+            font-weight: 900;
+        }
         & .key.enter {
             width: calc(100% + 140px);
         }
