@@ -1,5 +1,9 @@
 
 @media (max-width: 60vh) {
+    body {
+        border: none;
+        border-radius: 0;
+    }
     .screen {
         width: 100vw;
         height: 100%;

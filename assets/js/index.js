@@ -43,6 +43,41 @@ const AllWords = [
     "atado", "sofre", "razão", "lince", "ciclo", "tenor", "deusa",
     "leste", "morno", "trevo", "bardo", "quina", "pólis", "dúbio",
     "haras", "tchau", "líder", "sarda", "foste", "cobre", "surdo",
+
+    "sorte", "papel", "quais", "pinto", "barca", "mudos", "doido",
+    "norte", "oeste", "joias", "maçãs", "droga", "poder", "mundo",
+    "viuvo", "macio", "barba", "forca", "facão", "menor", "menos",
+    "outro", "somos", "barco", "balsa", "bunda", "ações", "medos",
+    "carro", "caros", "calça", "bolsa", "bocha", "carta", "caçar",
+    "galho", "terra", "pilha", "grave", "pinga", "grama", "estar",
+    "curso", "torta", "torto", "causa", "coisa", "casal", "casas",
+    "porta", "março", "junho", "julho", "carne", "trair", "diabo",
+    "irmão", "cargo", "estas", "cinco", "treze", "fomos", "fomes",
+    "feses", "trama", "circo", "olhar", "virar", "fazer", "morte",
+    "morto", "morre", "viver", "vivos", "larga", "solta", "terço",
+    "termo", "feroz", "vilão", "parto", "porte", "peito", "friza",
+
+    "gêmeo", "prima", "safra", "agito", "digna", "pombo", "ordem",
+    "penta", "poder", "olhos", "vazio", "parda", "visão", "combo",
+    "sexta", "fruta", "sarda", "nacho", "morna", "cerca", "murar",
+    "aroma", "pedra", "ávida", "boato", "agito", "beata", "senta",
+    "farda", "fosso", "jogar", "rodar", "grana", "teste", "broto",
+    "bumbo", "nicho", "vadia", "áureo", "suíço", "vício", "busto",
+    "lacre", "fibra", "bulbo", "calda", "puxar", "molar", "manso",
+    "viajo", "óxido", "supõe", "alvar", "cópia", "torça", "quedo",
+    "dúzia", "viúvo", "fosso", "maçom", "tumor", "pluma", "relax",
+    "abrir", "carga", "altar", "espiã", "pausa", "banal", "vital",
+
+    "curva", "papel", "lenda", "magia", "morna", "babar", "trigo", "manga",
+    "gorro", "átomo", "criar", "veraz", "vence", "viste", "parco", "caqui",
+    "bulha", "ritmo", "censo", "boldo", "parda", "surto", "bioma", "cacau",
+    "bloco", "outro", "cisne", "vírus", "recém", "vadia", "viúvo", "melão",
+    "exato", "clave", "perca", "gosto", "draga", "narco", "peito", "limão",
+    "mocha", "lábio", "coala", "peixe", "foder", "derme", "zoada", "amora",
+    "balde", "gorro", "magma", "gávea", "sofri", "burro", "dólar", "mamão",
+    "capim", "treno", "sogra", "queda", "tribo", "etapa", "bruxa", "atriz",
+    "iscar", "veria", "colar", "disco", "couve", "leque", "cerol",
+    "jurar", "úbere", "pesar", "pequi", "fruir", "amena", "perco",
 ]
 
 String.prototype.extend = function(char) {
@@ -52,7 +87,6 @@ Array.prototype.incAny = function(letter) {
     return this.some(item => item.extend(letter));
 }
 
-// const RealWord = "LÁPIS"
 var RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
 
 document.addEventListener("keyup", (ev) => {
@@ -60,7 +94,7 @@ document.addEventListener("keyup", (ev) => {
     let next = wait.nextElementSibling;
     let prev = wait.previousElementSibling;
 
-    console.log(ev.key)
+    // console.log(ev.key)
 
     if (ev.key === "ArrowRight") {
         if (next !== null) {
@@ -142,36 +176,40 @@ function testWord() {
     lets.forEach(d => s+=d.textContent);
     if (AllWords.incAny(s.toLowerCase())) {
         var interval = setInterval(() => {
-            let d = lets.item(index);
-            let letter = d.textContent;
-            if (RealWord[index].extend(letter)) {
-                revealLetter(d, "lock in-local", RealWord[index]);
-            } else if (RealWord.includes(letter)) {
-                revealLetter(d, "lock in-word");
+            if (index === 5) {
+                clearInterval(interval)
+                setTimeout(() => {
+                    if (document.querySelectorAll(".current .in-local").length === 5) {
+                        win()
+                    } else {
+                        document.querySelector(".current").classList.replace("current", "reveal");
+                        let future = document.querySelector(".future")
+                        if (future !== null) {
+                            future.classList.replace("future", "current");
+                            document.querySelectorAll(".current .lock").forEach(d => d.classList.remove("lock"))
+                            addEventClick()
+                        } else {
+                            lost()
+                        }
+                    }
+                }, 200)
             } else {
-                revealLetter(d, "lock");
-            }
-            index++;
-        }, 200)
-        setTimeout(() => {
-            clearInterval(interval)
-            if (document.querySelectorAll(".current .in-local").length === 5) {
-                win()
-            } else {
-                document.querySelector(".current").classList.replace("current", "reveal");
-                let future = document.querySelector(".future")
-                if (future !== null) {
-                    console.log(1)
-                    future.classList.replace("future", "current");
-                    document.querySelectorAll(".current .lock").forEach(d => d.classList.remove("lock"))
-                    addEventClick()
+                let d = lets.item(index);
+                let letter = d === null ? "" : d.textContent;
+                letter = letter === "Ç" ? "C" : letter
+                if (RealWord[index].extend(letter)) {
+                    document.querySelector(`.key.${letter}`).classList.add("correct")
+                    revealLetter(d, "lock in-local", RealWord[index]);
+                } else if (RealWord.includes(letter)) {
+                    document.querySelector(`.key.${letter}`).classList.add("have")
+                    revealLetter(d, "lock in-word");
                 } else {
-                    console.log(2)
-                    lost()
+                    document.querySelector(`.key.${letter}`).classList.add("no-have")
+                    revealLetter(d, "lock");
                 }
+                index++;
             }
-            index = 0;
-        }, 1250)
+        }, 200)
     } else {
         lets.forEach(d => {
             d.style.animation = "Shok 400ms forwards";
@@ -185,13 +223,20 @@ function testWord() {
 }
 
 function win() {
-    document.querySelectorAll(".current .in-local").forEach(d=>d.classList.remove("lock"));
-
-    let message = document.querySelector(".message")
-    message.innerHTML = `
-        <span>You Win</span>
-        <button onclick="newGame()">Next</button>`
-    message.classList.remove("hidden")
+    setTimeout(() => {
+        document.querySelectorAll(".current .letter").forEach((d, e) => {
+            d.classList.remove("lock")
+            d.style.animation = "Pulse 1s infinite";
+            d.style.animationDelay = `${e/5}s`;
+        });
+    
+        let message = document.querySelector(".message");
+        message.classList.remove("transparent");
+        message.innerHTML = `
+            <span>You Win</span>
+            <button onclick="newGame()">Next</button>`
+        message.classList.remove("hidden");
+    }, 200);
 }
 function lost() {
     let message = document.querySelector(".message")
@@ -199,6 +244,7 @@ function lost() {
         <span>R: <span class="res">${RealWord}</span></span>
         <button onclick="newGame()">Try again</button>`
     message.classList.remove("hidden")
+    message.classList.remove("transparent")
     document.querySelector(".message button").style.width = "80px"
     document.querySelector(".message .res").style.fontFamily = "consolas"
     document.querySelector(".message .res").style.fontSize = "30px"
@@ -221,7 +267,12 @@ function revealLetter(el, newe = null, change = null) {
 
 function newGame() {
     RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
-    document.querySelector(".message").classList.add("hidden");
+    console.log(RealWord)
+    
+    document.querySelector(".message").classList.add("transparent");
+    setTimeout(() => {
+        document.querySelector(".message").classList.add("hidden");
+    }, 500)
     document.querySelector(".words").outerHTML = `<div class="words">
         <div class="try-word current">
             <div class="letter wait"></div>
@@ -258,5 +309,19 @@ function newGame() {
             <div class="letter lock"></div>
             <div class="letter lock"></div>
         </div>
+        <div class="try-word future">
+            <div class="letter lock wait"></div>
+            <div class="letter lock"></div>
+            <div class="letter lock"></div>
+            <div class="letter lock"></div>
+            <div class="letter lock"></div>
+        </div>
     </div>`;
+    
+    addEventClick()
+    document.querySelectorAll(".keyboard .key").forEach(d => {
+        d.classList.remove("no-have")
+        d.classList.remove("correct")
+        d.classList.remove("have")
+    })
 }

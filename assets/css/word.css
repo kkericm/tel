@@ -1,19 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pacifico&display=swap');
 
 .try-word {
-    height: 58px;
-    width: 305px;
+    height: 50px;
+    width: 290px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
 }
 
 .letter {
     width: 50px;
-    border-radius: 10px;
-    border: 4px solid black;
-    background-color: rgb(74, 88, 121);
+    border-radius: 7px;
+    
+    outline: 4px solid black;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.519);
+
+    background-color: #4a5879;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     cursor: pointer;
     user-select: none;
@@ -22,28 +26,32 @@
     /* animation: Shok 300ms forwards; */
     
     font-size: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Josefin Sans', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    translate: border-bottom-width 200ms linear;
 }
 
-.wait {
+.wait:not(.lock) {
     background-color: rgb(109, 129, 174);
+    border-bottom-width: 0px;
+    translate: border-bottom-width 200ms linear;
 }
 .lock {
     background-color: rgb(58, 69, 94);
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: default;
 }
 .lock.in-local {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .lock.in-word {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .in-local {
-    background-color: rgb(98, 141, 108);
+    background-color: #78d48f;
 }
 .in-word {
-    background-color: rgb(220, 166, 90);
+    background-color: #dca65a;
 }
 
 @keyframes RevealLetter {
@@ -60,5 +68,16 @@
     }
     75% {
         transform: rotate(-3deg);
+    }
+}
+@keyframes Pulse {
+    0% {
+        box-shadow: 0 0 5px 0px #ffff80;
+    }
+    50% {
+        box-shadow: 0 0 15px 0px #ffff80;
+    }
+    100% {
+        box-shadow: 0 0 5px 0px #ffff80;
     }
 }

@@ -3,6 +3,8 @@
     margin-top: 20px;
     display: grid;
     width: 100%;
+    height: 100%;
+    max-height: 100px;
     row-gap: 7px;
 
 
@@ -13,7 +15,8 @@
 }
 
 .key {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Josefin Sans', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
     font-size: 25px;
     display: flex;
     justify-content: center;
@@ -22,15 +25,14 @@
     height: 37px;
     margin-inline: 4px;
     outline: 3px solid black;
-    border-bottom: 3px solid #53538e;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-    background-color: #7979d2;
+    background-color: #4a5879;
     cursor: pointer;
     user-select: none;
 }
 .key:hover {
-    background-color: #8989ef;
-    border-bottom-color: #6666ad;
+    background-color: #5c6d96;
 }
 .key:active {
     align-self: self-end;
@@ -44,5 +46,27 @@
     width: 70px;
     & img {
         width: 33px;
+    }
+}
+
+.no-have {
+    background-color: gray;
+    align-self: self-end;
+    border-bottom-width: 0px;
+    opacity: 0.5;
+    &:hover {
+        background-color: darkgray;
+    }
+}
+.have {
+    background-color: #dca65a;
+    &:hover {
+        background-color: #edb855;
+    }
+}
+.correct {
+    background-color: #78d48f;
+    &:hover {
+        background-color: #86eb9f;
     }
 }
