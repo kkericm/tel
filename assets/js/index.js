@@ -260,5 +260,3 @@ function newGame() {
         </div>
     </div>`;
 }
-
-lost()
