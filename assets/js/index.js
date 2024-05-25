@@ -267,7 +267,6 @@ function revealLetter(el, newe = null, change = null) {
 
 function newGame() {
     RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
-    console.log(RealWord)
     
     document.querySelector(".message").classList.add("transparent");
     setTimeout(() => {
