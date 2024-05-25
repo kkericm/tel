@@ -9,6 +9,7 @@ body {
     background-color: #3c4963;
     border: 7px solid black;
     border-radius: 15px;
+    overflow: hidden;
 }
 
 .screen {
