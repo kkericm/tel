@@ -1,0 +1,48 @@
+
+.keyboard {
+    margin-top: 20px;
+    display: grid;
+    width: 100%;
+    row-gap: 7px;
+
+
+    & div {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.key {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 37px;
+    margin-inline: 4px;
+    outline: 3px solid black;
+    border-bottom: 3px solid #53538e;
+    border-radius: 5px;
+    background-color: #7979d2;
+    cursor: pointer;
+    user-select: none;
+}
+.key:hover {
+    background-color: #8989ef;
+    border-bottom-color: #6666ad;
+}
+.key:active {
+    align-self: self-end;
+    border-bottom-width: 0px;
+}
+
+.del img {
+    width: 33px;
+}
+.enter {
+    width: 70px;
+    & img {
+        width: 33px;
+    }
+}

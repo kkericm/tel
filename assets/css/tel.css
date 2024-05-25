@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pacifico&display=swap');
+
+.tel {
+    font-family: 'Pacifico', system-ui;
+    font-size: 40px;
+    
+    display: flex;
+    align-items: center;
+    transform: rotate(-5deg) scale(1.05);
+
+    animation: TitleAnim 5s infinite;
+}
+.tel img {
+    height: 40px;
+    width: 40px;
+}
+
+@keyframes TitleAnim {
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(-5deg) scale(0.95);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+}
