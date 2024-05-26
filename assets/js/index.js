@@ -1,85 +1,4 @@
 
-const AllWords = [
-    "viste", "zoada", "urano", "calvo", "gases", "neném", "aliar",
-    "preta", "horas", "perro", "suave", "reger", "vírus", "peixe",
-    "sinto", "salva", "mecha", "rapto", "sírio", "astro", "exijo",
-    "metal", "civil", "surfe", "orgia", "cuíca", "irmão", "graxa",
-    "banco", "polpo", "rifle", "moído", "catar", "retrô", "móvel",
-    "solda", "salsa", "coisa", "caixa", "gávea", "parda", "costa",
-    "macia", "amido", "pitéu", "fúria", "pirão", "trigo", "baixo",
-    "ligue", "ergue", "corda", "alfar", "farda", "toque", "final",
-    "rímel", "rever", "ligar", "óbice", "banda", "ramal", "bomba",
-    "canoa", "noite", "floco", "capim", "vacum", "untar", "calar",
-
-    "foste", "pesos", "salto", "bucha", "domar", "douto", "bosta",
-    "moita", "furor", "panco", "dança", "espiã", "ativo", "clone",
-    "coesa", "bucal", "temor", "surra", "asilo", "frear", "exame",
-    "ganso", "plebe", "louça", "lasso", "mamãe", "clave", "amino",
-    "ímpar", "pedir", "horta", "régua", "álbum", "sanha", "beijo",
-    "polpo", "bolão", "surra", "parma", "cisco", "horta", "China",
-    "geada", "ganso", "lista", "trevo", "lábio", "deter", "barra",
-    "letal", "pulga", "porre", "diria", "cobre", "cofre", "testa",
-    "guiar", "atarê", "frear", "rodar", "gemer", "humor", "censo",
-    "palha", "raios", "feder", "aluno", "chula", "jovem", "gorda",
-
-    "pinça", "casal", "vácuo", "brega", "tomba", "lápis", "bazar",
-    "alemã", "ousar", "urgir", "avião", "votar", "vença", "sumir",
-    "vulto", "papai", "persa", "rimar", "sonso", "casar", "posto",
-    "porco", "dedal", "fadar", "papar", "ativo", "racha", "recém",
-    "varal", "ligar", "touro", "cesta", "lítio", "perco", "velha",
-    "sobra", "ramal", "dados", "lança", "lança", "perca", "fusca",
-    "viena", "cólon", "cegar", "danar", "ritmo", "exato", "temor",
-    "bacia", "vidro", "dengo", "vinil", "Havaí", "cujos", "tapar",
-    "feita", "longo", "ureia", "telão", "preso", "perda", "mocha",
-    "atual", "lagoa", "freio", "gnomo", "fobia", "lítio", "graça",
-
-    "mídia", "sabre", "feudo", "quite", "negar", "bolão", "febre",
-    "manto", "hotel", "pedra", "anzol", "bravo", "troço", "unção",
-    "pouca", "cesto", "safar", "mercê", "sarro", "órgão", "trela",
-    "tiara", "fardo", "parar", "resto", "panda", "farão", "afago",
-    "fungo", "fitas", "jeans", "foice", "dique", "herói", "casco",
-    "pudim", "guiar", "sogro", "prece", "burgo", "sonda", "zorra",
-    "rubro", "usina", "desde", "turca", "vinte", "porto", "dublê",
-    "atado", "sofre", "razão", "lince", "ciclo", "tenor", "deusa",
-    "leste", "morno", "trevo", "bardo", "quina", "pólis", "dúbio",
-    "haras", "tchau", "líder", "sarda", "foste", "cobre", "surdo",
-
-    "sorte", "papel", "quais", "pinto", "barca", "mudos", "doido",
-    "norte", "oeste", "joias", "maçãs", "droga", "poder", "mundo",
-    "viuvo", "macio", "barba", "forca", "facão", "menor", "menos",
-    "outro", "somos", "barco", "balsa", "bunda", "ações", "medos",
-    "carro", "caros", "calça", "bolsa", "bocha", "carta", "caçar",
-    "galho", "terra", "pilha", "grave", "pinga", "grama", "estar",
-    "curso", "torta", "torto", "causa", "coisa", "casal", "casas",
-    "porta", "março", "junho", "julho", "carne", "trair", "diabo",
-    "irmão", "cargo", "estas", "cinco", "treze", "fomos", "fomes",
-    "feses", "trama", "circo", "olhar", "virar", "fazer", "morte",
-    "morto", "morre", "viver", "vivos", "larga", "solta", "terço",
-    "termo", "feroz", "vilão", "parto", "porte", "peito", "friza",
-
-    "gêmeo", "prima", "safra", "agito", "digna", "pombo", "ordem",
-    "penta", "poder", "olhos", "vazio", "parda", "visão", "combo",
-    "sexta", "fruta", "sarda", "nacho", "morna", "cerca", "murar",
-    "aroma", "pedra", "ávida", "boato", "agito", "beata", "senta",
-    "farda", "fosso", "jogar", "rodar", "grana", "teste", "broto",
-    "bumbo", "nicho", "vadia", "áureo", "suíço", "vício", "busto",
-    "lacre", "fibra", "bulbo", "calda", "puxar", "molar", "manso",
-    "viajo", "óxido", "supõe", "alvar", "cópia", "torça", "quedo",
-    "dúzia", "viúvo", "fosso", "maçom", "tumor", "pluma", "relax",
-    "abrir", "carga", "altar", "espiã", "pausa", "banal", "vital",
-
-    "curva", "papel", "lenda", "magia", "morna", "babar", "trigo", "manga",
-    "gorro", "átomo", "criar", "veraz", "vence", "viste", "parco", "caqui",
-    "bulha", "ritmo", "censo", "boldo", "parda", "surto", "bioma", "cacau",
-    "bloco", "outro", "cisne", "vírus", "recém", "vadia", "viúvo", "melão",
-    "exato", "clave", "perca", "gosto", "draga", "narco", "peito", "limão",
-    "mocha", "lábio", "coala", "peixe", "foder", "derme", "zoada", "amora",
-    "balde", "gorro", "magma", "gávea", "sofri", "burro", "dólar", "mamão",
-    "capim", "treno", "sogra", "queda", "tribo", "etapa", "bruxa", "atriz",
-    "iscar", "veria", "colar", "disco", "couve", "leque", "cerol",
-    "jurar", "úbere", "pesar", "pequi", "fruir", "amena", "perco",
-]
-
 String.prototype.extend = function(char) {
     return this.normalize("NFD").replace(/[\u0300-\u036f]/g, "") === char.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
@@ -88,13 +7,12 @@ Array.prototype.incAny = function(letter) {
 }
 
 var RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
+var won = "0";
 
 document.addEventListener("keyup", (ev) => {
     let wait = document.querySelector(".current .wait");
     let next = wait.nextElementSibling;
     let prev = wait.previousElementSibling;
-
-    // console.log(ev.key)
 
     if (ev.key === "ArrowRight") {
         if (next !== null) {
@@ -133,8 +51,6 @@ document.querySelectorAll(".keyboard .key").forEach(d => {
         let wait = document.querySelector(".current .wait");
         let next = wait.nextElementSibling;
         let prev = wait.previousElementSibling;
-
-        // console.log(el.textContent)
 
         if (el.classList.contains("del")) {
             if (prev !== null) {
@@ -192,6 +108,7 @@ function testWord() {
                             lost()
                         }
                     }
+                    saveState()
                 }, 200)
             } else {
                 let d = lets.item(index);
@@ -223,6 +140,7 @@ function testWord() {
 }
 
 function win() {
+    won = "1"
     setTimeout(() => {
         document.querySelectorAll(".current .letter").forEach((d, e) => {
             d.classList.replace("lock", "pulsing")
@@ -271,7 +189,7 @@ function revealLetter(el, newe = null, change = null) {
     }, 200);
 }
 
-function newGame() {
+function newGame(index = 0) {
     RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
     
     document.querySelector(".tel img").classList.remove("pulsing-tel");
@@ -279,33 +197,116 @@ function newGame() {
         d.classList.remove("pulsing-tel");
     });
     document.querySelector("body").style.boxShadow = "inset 0 0 40px 0 rgba(0, 0, 0, 0.5)"
-    document.querySelector(".message").classList.add("transparent");
-    setTimeout(() => {
-        document.querySelector(".message").classList.add("hidden");
-    }, 500)
-    document.querySelectorAll(".try-word").forEach((d, e) => {
-        // console.log(d)
-        if (e === 0) {
-            d.className = "try-word current";
-            d.querySelectorAll(".letter").forEach((k, e1) => {
-                k.className = "letter" + (e1 == 0 ? " wait" : "");
-                k.textContent = ""
-                k.style.animation = ""
-            })
-        } else {
-            d.className = "try-word future";
-            d.querySelectorAll(".letter").forEach((k, e2) => {
-                k.className = "letter lock" + (e2 == 0 ? " wait" : "");
-                k.textContent = ""
-                k.style.animation = ""
-            });
-        }
-    })
+    if (index !== -1) {
+        document.querySelector(".message").classList.add("transparent");
+        setTimeout(() => {
+            document.querySelector(".message").classList.add("hidden");
+        }, 500)
+        document.querySelectorAll(".try-word").forEach((d, e) => {
+            if (e === 0) {
+                d.className = "try-word current";
+                d.querySelectorAll(".letter").forEach((k, e1) => {
+                    k.className = "letter" + (e1 == 0 ? " wait" : "");
+                    k.textContent = ""
+                    k.style.animation = ""
+                })
+            } else {
+                d.className = "try-word future";
+                d.querySelectorAll(".letter").forEach((k, e2) => {
+                    k.className = "letter lock" + (e2 == 0 ? " wait" : "");
+                    k.textContent = ""
+                    k.style.animation = ""
+                });
+            }
+        });
+    }
     
     addEventClick()
     document.querySelectorAll(".keyboard .key").forEach(d => {
         d.classList.remove("no-have")
         d.classList.remove("correct")
         d.classList.remove("have")
-    })
+    });
+    won = "0"
+    saveState()
 }
+
+
+function saveState() {
+    var words = ""
+    var keys = ""
+    document.querySelectorAll(".try-word:not(.future)").forEach(d => {
+        d.querySelectorAll(".letter").forEach(el => {
+            if(el.classList.contains("in-local")){ words += "2" }
+            else if(el.classList.contains("in-word")){ words += "1" }
+            else{ words += "0" }
+            words += el.textContent || "&"
+        })
+        words += "-"
+    })
+    document.querySelectorAll(".keyboard .key").forEach(d => {
+        if(d.classList.contains("correct")){ keys += "3" }
+        else if(d.classList.contains("have")){ keys += "2" }
+        else if(d.classList.contains("no-have")){ keys += "0" }
+        else{ keys += "1" }
+    })
+    // return [words, keys, won + RealWord]
+    saveCookie("words", words)
+    saveCookie("keyboard", keys)
+    saveCookie("word", won + RealWord)
+}
+function saveCookie(key, content, espireIn = 1, path = "/") {
+    var expDate = new Date();
+    expDate.setMonth(expDate.getHours() + espireIn); // expira em 1 hora
+    document.cookie = `${key}=${content}; expires=${expDate.toUTCString()}; path=${path}`;
+}
+function loadState(/**@type {string}*/ state) {
+    newGame(-1)
+    RealWord = state[2].slice(1);
+    var _win = state[2].at(0) === "1";
+    var words = state[0]
+        .split("-")
+        .slice(0, -1)
+        .map((d) => {
+            var s = [];
+                for (var i = 0; i < d.length; i += 2) s.push(d.substring(i, i + 2));
+                return s;
+            })
+    var keys = state[1]
+
+    var dwords = document.querySelectorAll(".try-word");
+    words.forEach((word, i) => {
+        if (i === words.length - 1 && !_win) {
+            dwords.item(0).classList.replace("current", "reveal");
+            dwords.item(i).classList.replace("future", "current");
+            dwords.item(0).querySelectorAll(".letter").forEach((letter, j) => {
+                letter.classList.add("lock")
+            });
+            dwords.item(i).querySelectorAll(".letter").forEach((letter, j) => {
+                letter.classList.remove("lock")
+            });
+        } else {
+            dwords.item(i).classList.replace("future", "reveal")
+            dwords.item(i).querySelectorAll(".letter").forEach((letter, j) => {
+                if (word[j].at(0) === "2") letter.classList.add("in-local")
+                else if (word[j].at(0) === "1") letter.classList.add("in-word")
+                letter.textContent = word[j].at(1);
+            });
+        }
+    });
+    console.log(keys)
+    document.querySelectorAll(".keyboard .key").forEach((d, e) => {
+        if(keys.at(e) === "3") d.classList.add("correct")
+        else if(keys.at(e) === "2") d.classList.add("have")
+        else if(keys.at(e) === "0") d.classList.add("no-have")
+    })
+    console.log(state)
+    if (_win) {
+        let cs = dwords.item(words.length - 1)
+        cs.classList.replace("reveal", "current")
+        cs.querySelectorAll(".letter").item(0).classList.remove("wait")
+        win();
+    }
+}
+var entrys = Object.fromEntries(document.cookie.split("; ").map(d => d.split("=")))
+loadState([entrys.words, entrys.keyboard, entrys.word])

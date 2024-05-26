@@ -61,18 +61,21 @@
     align-self: self-end;
     border-bottom-width: 0px;
     opacity: 0.5;
+    animation: RevealLetter 500ms forwards;
     &:hover {
         background-color: darkgray;
     }
 }
 .have {
     background-color: #dca65a;
+    animation: RevealLetter 500ms forwards;
     &:hover {
         background-color: #edb855;
     }
 }
 .correct {
     background-color: #78d48f;
+    animation: RevealLetter 500ms forwards;
     &:hover {
         background-color: #86eb9f;
     }
