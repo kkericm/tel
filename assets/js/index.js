@@ -294,17 +294,15 @@ function loadState(/**@type {string}*/ state) {
             });
         }
     });
-    console.log(keys)
     document.querySelectorAll(".keyboard .key").forEach((d, e) => {
         if(keys.at(e) === "3") d.classList.add("correct")
         else if(keys.at(e) === "2") d.classList.add("have")
         else if(keys.at(e) === "0") d.classList.add("no-have")
-    })
-    console.log(state)
+    });
     if (_win) {
-        let cs = dwords.item(words.length - 1)
-        cs.classList.replace("reveal", "current")
-        cs.querySelectorAll(".letter").item(0).classList.remove("wait")
+        let cs = dwords.item(words.length - 1);
+        cs.classList.replace("reveal", "current");
+        cs.querySelectorAll(".letter").item(0).classList.remove("wait");
         win();
     }
 }
