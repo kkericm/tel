@@ -56,3 +56,9 @@
 .pulsing-tel {
     animation: PulseTel 2s infinite
 }
+
+.res {
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 30px;
+}
