@@ -228,7 +228,7 @@ function win() {
             d.classList.replace("lock", "pulsing")
             d.style.animationDelay = `${e/7}s`;
         });
-        document.querySelector(".screen").style.boxShadow = "inset 0 0 100px 0 rgba(0, 0, 0, 0.6)"
+        document.querySelector("body").style.boxShadow = "inset 0 0 100px 0 rgba(0, 0, 0, 0.6)"
         document.querySelector(".tel img").classList.add("pulsing-tel")
         document.querySelectorAll(".tel .title span").forEach((d, e) => {
             d.classList.add("pulsing-tel")
@@ -278,7 +278,7 @@ function newGame() {
     document.querySelectorAll(".tel .title span").forEach(d => {
         d.classList.remove("pulsing-tel");
     });
-    document.querySelector(".screen").style.boxShadow = "inset 0 0 40px 0 rgba(0, 0, 0, 0.5)"
+    document.querySelector("body").style.boxShadow = "inset 0 0 40px 0 rgba(0, 0, 0, 0.5)"
     document.querySelector(".message").classList.add("transparent");
     setTimeout(() => {
         document.querySelector(".message").classList.add("hidden");

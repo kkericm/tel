@@ -10,6 +10,8 @@ body {
     border: 7px solid black;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: inset 0 0 40px 0 rgba(0, 0, 0, 0.5);
+    transition: box-shadow 3s linear;
 }
 
 .screen {
@@ -17,9 +19,7 @@ body {
     height: 700px;
     /* max-height: 700px; */
 
-    box-shadow: inset 0 0 40px 0 rgba(0, 0, 0, 0.5);
     /* animation: PulseAll 3s forwards; */
-    transition: box-shadow 3s linear;
     
     display: grid;
     justify-items: center;
