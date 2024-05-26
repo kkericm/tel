@@ -167,11 +167,8 @@ function lost() {
     message.innerHTML = `
         <span>R: <span class="res">${RealWord}</span></span>
         <button onclick="newGame()">Try again</button>`
-    message.classList.remove("hidden")
-    message.classList.remove("transparent")
-    document.querySelector(".message button").style.width = "80px"
-    document.querySelector(".message .res").style.fontFamily = "'Josefin Sans', 'Arial Narrow', Arial, sans-serif"
-    document.querySelector(".message .res").style.fontSize = "30px"
+    message.classList.remove("hidden");
+    message.classList.remove("transparent");
 }
 
 function randInt(min, max) {

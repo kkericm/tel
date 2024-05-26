@@ -89,3 +89,10 @@
 .pulsing {
     animation: Pulse 1s infinite;
 }
+
+.res {
+    width: 80px;
+    font-family: 'Josefin Sans', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
