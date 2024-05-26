@@ -225,17 +225,23 @@ function testWord() {
 function win() {
     setTimeout(() => {
         document.querySelectorAll(".current .letter").forEach((d, e) => {
-            d.classList.remove("lock")
-            d.style.animation = "Pulse 1s infinite";
-            d.style.animationDelay = `${e/5}s`;
+            d.classList.replace("lock", "pulsing")
+            d.style.animationDelay = `${e/7}s`;
+        });
+        document.querySelector(".screen").style.boxShadow = "inset 0 0 100px 0 rgba(0, 0, 0, 0.6)"
+        document.querySelector(".tel img").classList.add("pulsing-tel")
+        document.querySelectorAll(".tel .title span").forEach((d, e) => {
+            d.classList.add("pulsing-tel")
         });
     
-        let message = document.querySelector(".message");
-        message.classList.remove("transparent");
-        message.innerHTML = `
-            <span>You Win</span>
-            <button onclick="newGame()">Next</button>`
-        message.classList.remove("hidden");
+        setTimeout(() => {
+            let message = document.querySelector(".message");
+            message.classList.remove("transparent");
+            message.innerHTML = `
+                <span>You Win</span>
+                <button onclick="newGame()">Next</button>`
+            message.classList.remove("hidden");
+        }, 200)
     }, 200);
 }
 function lost() {
@@ -268,54 +274,33 @@ function revealLetter(el, newe = null, change = null) {
 function newGame() {
     RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
     
+    document.querySelector(".tel img").classList.remove("pulsing-tel");
+    document.querySelectorAll(".tel .title span").forEach(d => {
+        d.classList.remove("pulsing-tel");
+    });
+    document.querySelector(".screen").style.boxShadow = "inset 0 0 40px 0 rgba(0, 0, 0, 0.5)"
     document.querySelector(".message").classList.add("transparent");
     setTimeout(() => {
         document.querySelector(".message").classList.add("hidden");
     }, 500)
-    document.querySelector(".words").outerHTML = `<div class="words">
-        <div class="try-word current">
-            <div class="letter wait"></div>
-            <div class="letter"></div>
-            <div class="letter"></div>
-            <div class="letter"></div>
-            <div class="letter"></div>
-        </div>
-        <div class="try-word future">
-            <div class="letter lock wait"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-        </div>
-        <div class="try-word future">
-            <div class="letter lock wait"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-        </div>
-        <div class="try-word future">
-            <div class="letter lock wait"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-        </div>
-        <div class="try-word future">
-            <div class="letter lock wait"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-        </div>
-        <div class="try-word future">
-            <div class="letter lock wait"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-            <div class="letter lock"></div>
-        </div>
-    </div>`;
+    document.querySelectorAll(".try-word").forEach((d, e) => {
+        // console.log(d)
+        if (e === 0) {
+            d.className = "try-word current";
+            d.querySelectorAll(".letter").forEach((k, e1) => {
+                k.className = "letter" + (e1 == 0 ? " wait" : "");
+                k.textContent = ""
+                k.style.animation = ""
+            })
+        } else {
+            d.className = "try-word future";
+            d.querySelectorAll(".letter").forEach((k, e2) => {
+                k.className = "letter lock" + (e2 == 0 ? " wait" : "");
+                k.textContent = ""
+                k.style.animation = ""
+            });
+        }
+    })
     
     addEventClick()
     document.querySelectorAll(".keyboard .key").forEach(d => {

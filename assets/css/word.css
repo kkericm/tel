@@ -17,7 +17,7 @@
 
     background-color: #4a5879;
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: center;
     cursor: pointer;
     user-select: none;
@@ -25,21 +25,25 @@
     /* animation: RevealLetter 400ms forwards; */
     /* animation: Shok 300ms forwards; */
     
-    font-size: 40px;
+    padding-top: 5px;
+    font-size: 30px;
     font-family: 'Josefin Sans', 'Arial Narrow', Arial, sans-serif;
     font-weight: 700;
-    translate: border-bottom-width 200ms linear;
-}
-
+    transition: 
+        /* border 200ms linear, */
+        opacity 200ms linear;
+    }
+    
 .wait:not(.lock) {
     background-color: rgb(109, 129, 174);
     border-bottom-width: 0px;
-    translate: border-bottom-width 200ms linear;
 }
 .lock {
     background-color: rgb(58, 69, 94);
     opacity: 0.3;
     cursor: default;
+    transition: 
+        opacity 200ms linear;
 }
 .lock.in-local {
     opacity: 0.6;
@@ -72,12 +76,16 @@
 }
 @keyframes Pulse {
     0% {
-        box-shadow: 0 0 5px 0px #ffff80;
+        box-shadow: 0 0 10px 0px #ffff80;
     }
     50% {
         box-shadow: 0 0 15px 0px #ffff80;
     }
     100% {
-        box-shadow: 0 0 5px 0px #ffff80;
+        box-shadow: 0 0 10px 0px #ffff80;
     }
+}
+
+.pulsing {
+    animation: Pulse 1s infinite;
 }

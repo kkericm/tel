@@ -15,6 +15,7 @@
 }
 
 .key {
+    padding-top: 5px;
     font-family: 'Josefin Sans', 'Arial Narrow', Arial, sans-serif;
     font-weight: 700;
     font-size: 25px;
@@ -22,7 +23,7 @@
     justify-content: center;
     align-items: center;
     width: 40px;
-    height: 37px;
+    height: 32px;
     margin-inline: 4px;
     outline: 3px solid black;
     border-bottom: 3px solid rgba(0, 0, 0, 0.3);
@@ -39,10 +40,16 @@
     border-bottom-width: 0px;
 }
 
-.del img {
-    width: 33px;
+.del {
+    height: 37px;
+    padding-top: 0px;
+    & img {
+        width: 33px;
+    }
 }
 .enter {
+    height: 37px;
+    padding-top: 0px;
     width: 70px;
     & img {
         width: 33px;
