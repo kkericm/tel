@@ -118,7 +118,7 @@
 // }
 
 const AllWords = [
-    'viste', 'zoada', 'urano', 'calvo', 'gases', 'neném', 'aliar', 'preta', 'horas',
+    'viste', 'zoada', 'urano', 'calvo', 'gases', 'neném', 'aliar', 'preta', 'horas', 'fácil',
     'perro', 'suave', 'reger', 'vírus', 'peixe', 'sinto', 'salva', 'mecha', 'rapto', 'sírio',
     'astro', 'exijo', 'metal', 'civil', 'surfe', 'orgia', 'cuíca', 'irmão', 'graxa', 'banco',
     'polpo', 'rifle', 'moído', 'catar', 'retrô', 'móvel', 'solda', 'salsa', 'coisa', 'caixa',
@@ -127,7 +127,7 @@ const AllWords = [
     'óbice', 'banda', 'ramal', 'bomba', 'canoa', 'noite', 'floco', 'capim', 'vacum', 'untar',
     'calar', 'foste', 'pesos', 'salto', 'bucha', 'domar', 'douto', 'bosta', 'moita', 'furor',
     'panco', 'dança', 'espiã', 'ativo', 'clone', 'coesa', 'bucal', 'temor', 'surra', 'asilo',
-    'frear', 'exame', 'ganso', 'plebe', 'louça', 'lasso', 'mamãe', 'clave', 'amino', 'ímpar',
+    'frear', 'exame', 'ganso', 'plebe', 'louça', 'lasso', 'mamãe', 'clave', 'ateus', 'ímpar',
     'pedir', 'horta', 'régua', 'álbum', 'sanha', 'beijo', 'bolão', 'parma', 'cisco', 'China',
     'geada', 'lista', 'trevo', 'lábio', 'deter', 'barra', 'letal', 'pulga', 'porre', 'diria',
     'cobre', 'cofre', 'testa', 'guiar', 'atarê', 'rodar', 'gemer', 'humor', 'censo', 'palha',
@@ -153,7 +153,7 @@ const AllWords = [
     'março', 'junho', 'julho', 'carne', 'trair', 'diabo', 'nariz', 'cargo', 'estas', 'cinco',
     'treze', 'fomos', 'fomes', 'feses', 'trama', 'circo', 'olhar', 'virar', 'fazer', 'morte',
     'morto', 'morre', 'viver', 'vivos', 'larga', 'solta', 'terço', 'termo', 'feroz', 'vilão',
-    'parto', 'porte', 'friza', 'gêmeo', 'prima', 'safra', 'agito', 'digna', 'pombo', 'ordem',
+    'parto', 'porte', 'friza', 'gêmeo', 'prima', 'fruto', 'agito', 'digna', 'pombo', 'ordem',
     'penta', 'olhos', 'vazio', 'visão', 'combo', 'sexta', 'fruta', 'nacho', 'morna', 'cerca',
     'murar', 'aroma', 'ávida', 'boato', 'beata', 'senta', 'fosso', 'jogar', 'grana', 'teste',
     'broto', 'bumbo', 'nicho', 'vadia', 'áureo', 'suíço', 'vício', 'lacre', 'fibra', 'bulbo',
@@ -169,7 +169,7 @@ const AllWords = [
     'melão', 'gosto', 'draga', 'narco', 'limão', 'coala', 'foder', 'derme', 'amora', 'balde',
     'magma', 'sofri', 'burro', 'dólar', 'mamão', 'treno', 'sogra', 'queda', 'tribo', 'etapa',
     'bruxa', 'atriz', 'iscar', 'veria', 'colar', 'disco', 'couve', 'leque', 'cerol', 'jurar',
-    'úbere', 'pesar', 'pequi', 'fruir', 'amena', 'pária', 'durar', 'gueto', 'pravo', 'vexar',
+    'úbere', 'pesar', 'pequi', 'fluir', 'amena', 'pária', 'durar', 'gueto', 'pravo', 'vexar',
     'advir', 'massa', 'disse', 'canga', 'prova', 'lhama', 'bolha', 'guria', 'apego', 'edema',
     'tampa', 'coifa', 'berço', 'bossa', 'briga', 'mosca', 'tacar', 'gambá', 'judia', 'chaga',
     'rosca', 'datar', 'ânimo', 'radar', 'fatia', 'grupo', 'corte', 'ogiva', 'chama', 'derma',
@@ -180,5 +180,7 @@ const AllWords = [
     'podre', 'aedes', 'coçar', 'rapaz', 'êxodo', 'spray', 'lidar', 'trajo', 'lenha', 'feraz',
     'topar', 'serra', 'vasta', 'apoio', 'vetar', 'optar', 'ferir', 'sabão', 'cifra', 'pasto',
     'alado', 'magna', 'acuar', 'logon', 'login', 'lobal', 'capaz', 'calma', 'ruivo', 'pinha',
-    'expor', 'treco', 'cueca', 'fórum', 'mofar', 'envio', 'fugaz', 'chuva', 'amida'
+    'expor', 'treco', 'cueca', 'fórum', 'mofar', 'envio', 'fugaz', 'chuva', 'amida', "fundo",
+    'falso', 'muito', 'muita', "saida", "tigre", "brita", "aviso", "avisa", "vista", 'visto',
+    'frisa', 'frito', 'frita'
 ]

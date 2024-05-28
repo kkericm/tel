@@ -10,6 +10,7 @@ var RealWord = AllWords[randInt(0, AllWords.length)].toUpperCase();
 var won = "0";
 
 document.addEventListener("keyup", (ev) => {
+    /**@type {HTMLElement} */
     let wait = document.querySelector(".current .wait");
     let next = wait.nextElementSibling;
     let prev = wait.previousElementSibling;
@@ -28,16 +29,20 @@ document.addEventListener("keyup", (ev) => {
         testWord()
     } else if (ev.key === "Backspace") {
         if (prev !== null) {
-            wait.textContent = ""
+            wait.textContent = "";
             wait.classList.remove("wait");
             prev.classList.add("wait");
         } else {
-            wait.textContent = ""
+            wait.textContent = "";
         }
     } else if (ev.key.length === 1) {
         if (next !== null) {
             wait.textContent = ev.key.toUpperCase()
             wait.classList.replace("wait", "fill")
+            wait.style.animationName = "JumpLetter";
+            setTimeout(()=>{
+                wait.style.animationName = "";
+            }, 200);
             next.classList.add("wait")
         } else {
             wait.textContent = ev.key.toUpperCase()
@@ -142,6 +147,7 @@ function testWord() {
 function win() {
     won = "1"
     setTimeout(() => {
+        addWinStrike()
         document.querySelectorAll(".current .letter").forEach((d, e) => {
             d.classList.replace("lock", "pulsing")
             d.style.animationDelay = `${e/7}s`;
@@ -163,7 +169,9 @@ function win() {
     }, 200);
 }
 function lost() {
-    let message = document.querySelector(".message")
+    won = "2";
+    saveState(0);
+    let message = document.querySelector(".message");
     message.innerHTML = `
         <span>R: <span class="res">${RealWord}</span></span>
         <button onclick="newGame()">Try again</button>`
@@ -171,6 +179,21 @@ function lost() {
     message.classList.remove("transparent")
     document.querySelector(".message button").style.width = "80px"
     document.querySelector(".message .res").style.fontFamily = "Josefin Sans"
+
+        
+    /**@type {HTMLElement}*/
+    let ws = document.querySelector(".win-strike > .value")
+    ws.style.textDecoration = "line-through";
+    ws.style.animationName = "Fall";
+    setTimeout(() => {
+        ws.textContent = "0"
+        ws.style.marginTop = 10;
+        ws.style.animationName = "GoBack"
+        ws.style.textDecoration = "none"
+        setTimeout(() => {
+            ws.style.animationName = ""
+        }, 1000);
+    }, 1000)
 }
 
 function randInt(min, max) {
@@ -227,11 +250,10 @@ function newGame(index = 0) {
         d.classList.remove("have")
     });
     won = "0"
-    saveState()
 }
 
 
-function saveState() {
+function saveState(ws = undefined) {
     var words = ""
     var keys = ""
     document.querySelectorAll(".try-word:not(.future)").forEach(d => {
@@ -249,10 +271,11 @@ function saveState() {
         else if(d.classList.contains("no-have")){ keys += "0" }
         else{ keys += "1" }
     })
-    // return [words, keys, won + RealWord]
+    // console.log(document.querySelector(".win-strike > .value").textContent)
     saveCookie("words", words)
     saveCookie("keyboard", keys)
     saveCookie("word", won + RealWord)
+    saveCookie("winStrike", ws ?? document.querySelector(".win-strike > .value").textContent)
 }
 function saveCookie(key, content, espireIn = 1, path = "/") {
     var expDate = new Date();
@@ -262,20 +285,22 @@ function saveCookie(key, content, espireIn = 1, path = "/") {
 function loadState(/**@type {string}*/ state) {
     newGame(-1)
     RealWord = state[2].slice(1);
-    var _win = state[2].at(0) === "1";
+    var _win = parseInt(state[2].at(0));
     var words = state[0]
         .split("-")
         .slice(0, -1)
         .map((d) => {
             var s = [];
-                for (var i = 0; i < d.length; i += 2) s.push(d.substring(i, i + 2));
-                return s;
-            })
+            for (var i = 0; i < d.length; i += 2) s.push(d.substring(i, i + 2));
+            return s;
+        })
     var keys = state[1]
+    
+    document.querySelector(".win-strike > .value").textContent = state[3]
 
     var dwords = document.querySelectorAll(".try-word");
     words.forEach((word, i) => {
-        if (i === words.length - 1 && !_win) {
+        if (i === words.length - 1 && _win == 0) {
             dwords.item(0).classList.replace("current", "reveal");
             dwords.item(i).classList.replace("future", "current");
             dwords.item(0).querySelectorAll(".letter").forEach((letter, j) => {
@@ -298,12 +323,41 @@ function loadState(/**@type {string}*/ state) {
         else if(keys.at(e) === "2") d.classList.add("have")
         else if(keys.at(e) === "0") d.classList.add("no-have")
     });
-    if (_win) {
+    if (_win === 1) {
         let cs = dwords.item(words.length - 1);
         cs.classList.replace("reveal", "current");
         cs.querySelectorAll(".letter").item(0).classList.remove("wait");
         win();
+    } else if (_win === 2) {
+        document.querySelector(".message").classList.remove("hidden")
+        lost()
+    } else {
+        document.querySelector(".message").classList.add("hidden");
     }
 }
+// 0M0U0N0D0O-0P2Á0R0T0O-0P2Á0R0T1E-0F0U0N0D0O-0B0U0N0D2A-0B0U0N0D2A-
+function addWinStrike() {
+    let image = document.querySelector(".win-strike > .image");
+    let gif = document.querySelector(".win-strike > .gif");
+    let val = document.querySelector(".win-strike > .value");
+    let mor = document.querySelector(".win-strike > .mor");
+    
+    image.classList.add("transparent");
+    gif.classList.remove("transparent");
+    val.style.filter = "drop-shadow(0 0 5px #ffff63)";
+    val.style.color = "white";
+    val.textContent = parseInt(val.textContent) + 1;
+    mor.style.opacity = '1'
+    setTimeout(() => {
+        gif.classList.add("transparent");
+        image.classList.remove("transparent");
+    }, 2000)
+    setTimeout(() => {
+        val.style.filter = "";
+        val.style.color = "black";
+        mor.style.opacity = '0'
+    }, 3000)
+}
+
 var entrys = Object.fromEntries(document.cookie.split("; ").map(d => d.split("=")))
-loadState([entrys.words, entrys.keyboard, entrys.word])
+loadState([entrys.words, entrys.keyboard, entrys.word, entrys.winStrike])

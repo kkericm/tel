@@ -1,5 +1,6 @@
 
 .keyboard {
+    grid-area: keyb;
     margin-top: 20px;
     display: grid;
     width: 100%;

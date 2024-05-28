@@ -1,5 +1,6 @@
 
 .message {
+    grid-area: msg;
     display: flex;
     flex-direction: column;
     justify-items: center;

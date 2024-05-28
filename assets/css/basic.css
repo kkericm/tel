@@ -26,6 +26,13 @@ body {
     align-content: center;
     
     grid-template-rows: 10% 12% 52% 23%;
+    grid-template-columns: 10% 90%;
+
+    grid-template-areas: 
+        "tel tel"
+        "msg msg"
+        "word word"
+        "keyb keyb";
 }
 
 /* @keyframes PulseAll {
