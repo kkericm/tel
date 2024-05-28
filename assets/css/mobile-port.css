@@ -50,4 +50,9 @@
     .message button {
         scale: 1.3;
     }
+    .win-strike {
+        scale: 0.7;
+        top: -10px;
+        left: -10px;
+    }
 }
